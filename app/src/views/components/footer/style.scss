@@ -1,0 +1,30 @@
+@import "../../../variables.scss";
+
+#footer-wrapper {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: $footerheight;
+
+  #footer {
+    max-width: $pagewidth;
+    margin: auto;
+    padding: 20px;
+
+    #signature {
+      display: block;
+      font-size: 14px;
+      line-height: 20px;
+      color: $white;
+      text-align: center;
+
+      span {
+        color: $error;
+      }
+
+      a {
+        color: $darkgray;
+      }
+    }
+  }
+}

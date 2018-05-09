@@ -1,2 +1,3 @@
 # wongpowah.github.io
-WPW Sewing Machine Ltd's website
+
+WPW Sewing Machine Co., Ltd.'s website

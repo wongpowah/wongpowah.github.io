@@ -1,0 +1,49 @@
+@import "../../../../variables.scss";
+
+#home-wrapper {
+  animation-name: fade-in;
+  animation-duration: $animatetime1;
+
+  #headline {
+    position: relative;
+    min-height: 100vh;
+    margin-top: -$headerheight;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: $white;
+
+      @include respond-to(mobile_landscape) {
+        font-size: 32px;
+      }
+    }
+  }
+
+  #about,
+  #products,
+  #contact {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 80px 40px;
+  }
+
+  #about {
+    background-color: $brightlight;
+  }
+
+  #products {
+    background-color: $white;
+  }
+
+  #contact {
+    background-color: $brightlight;
+  }
+}

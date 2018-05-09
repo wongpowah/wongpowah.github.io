@@ -1,0 +1,50 @@
+@import "../../../../variables.scss";
+
+#login-wrapper {
+  min-width: 300px;
+  width: 90%;
+  max-width: 380px;
+  margin: 20px auto;
+  animation-name: fade-in;
+  animation-duration: $animatetime1;
+
+  #login {
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: $brightlight;
+
+    #forgot-password-link {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 30px;
+      color: $primary;
+    }
+
+    .login-field {
+      width: 100%;
+    }
+
+    #error-message {
+      display: block;
+      min-height: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: $error;
+    }
+
+    #login-spinner {
+      margin: auto;
+      @include spinner(50px);
+    }
+
+    #login-button {
+      display: block;
+      margin: auto;
+      @include button-font();
+      @include bubble($primary, 50px);
+    }
+  }
+}

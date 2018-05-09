@@ -1,0 +1,45 @@
+@import "../../../variables.scss";
+
+.menu-button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 20px;
+  float: left;
+  transition: $animatetime1;
+  cursor: pointer;
+
+  &.expanded {
+    .menu-line:nth-child(1) {
+      transform: rotate(-45deg);
+    }
+
+    .menu-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-line:nth-child(3) {
+      transform: rotate(45deg);
+    }
+  }
+
+  .menu-line {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    height: 2px;
+    margin-top: -1px;
+    background-color: $black;
+    transition: $animatetime1;
+    transform-origin: center;
+
+    &:nth-child(1) {
+      transform: translateY(-8px);
+    }
+
+    &:nth-child(3) {
+      transform: translateY(8px);
+    }
+  }
+}

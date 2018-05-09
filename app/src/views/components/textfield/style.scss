@@ -1,0 +1,94 @@
+@import "../../../variables.scss";
+
+.textfield {
+  display: inline-block;
+  position: relative;
+
+  &.focus,
+  &.error {
+    .textfield-underline {
+      width: 100%;
+    }
+  }
+
+  &.focus,
+  &.filled {
+    color: $black;
+
+    .textfield-input,
+    .textfield-label {
+      color: inherit;
+    }
+
+    .textfield-label {
+      transform: scale(0.75) translate(0px, -30px);
+      transform-origin: left top 0px;
+    }
+  }
+
+  &.error {
+    .textfield-input,
+    .textfield-underline {
+      border-color: $error;
+    }
+  }
+
+  &.disabled {
+    .textfield-input {
+      color: $darkgray;
+      cursor: default;
+    }
+  }
+
+  .textfield-label {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    font-size: 16px;
+    color: $darkgray;
+    user-select: none;
+    cursor: text;
+    transition: $animatetime1;
+  }
+
+  .textfield-input {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $darkgray;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    padding: 0px;
+    font-size: 16px;
+    color: $gray;
+    resize: none;
+    transition: $animatetime1;
+  }
+
+  .textfield-error {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 25px;
+    font-size: 11px;
+    color: $error;
+  }
+
+  .textfield-underline {
+    position: absolute;
+    height: 25px;
+    width: 0px;
+    bottom: 0px;
+    border-top: 2px solid;
+    transition: $animatetime1;
+  }
+
+  input,
+  textarea {
+    background-color: transparent;
+  }
+
+  input.textfield-input {
+    height: 30px;
+  }
+}

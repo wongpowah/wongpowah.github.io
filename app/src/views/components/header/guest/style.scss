@@ -1,0 +1,143 @@
+@import "../../../../variables.scss";
+
+#guest-header-wrapper {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  width: 100%;
+  height: $headerheight;
+  box-sizing: border-box;
+  transition: $animatetime1;
+
+  * {
+    color: $white;
+  }
+
+  &.float {
+    background-color: $white;
+    box-shadow: $shadowdepth2;
+
+    * {
+      color: $black;
+    }
+
+    #guest {
+      #guest-home-link #guest-logo {
+        filter: none;
+      }
+
+      #guest-menu-button .menu-line {
+        background-color: $black;
+      }
+    }
+  }
+
+  #guest {
+    position: relative;
+    max-width: $pagewidth;
+    margin: auto;
+    padding: 0px 20px;
+
+    #guest-home-link {
+      display: inline-block;
+      position: relative;
+      height: 40px;
+      margin: 10px 50px 10px 10px;
+      vertical-align: top;
+      z-index: 1;
+
+      @include respond-to(mobile_landscape) {
+        margin: 10px;
+      }
+
+      #guest-logo {
+        height: 100%;
+        filter: invert(1);
+      }
+    }
+
+    #guest-menu-button {
+      display: none;
+      width: 20px;
+      height: 20px;
+      float: right;
+      z-index: 1;
+
+      @include respond-to(mobile_landscape) {
+        display: inline-block;
+      }
+
+      .menu-line {
+        background-color: $white;
+      }
+    }
+
+    #guest-menu {
+      display: initial;
+
+      .guest-link {
+        display: inline-block;
+        padding: 20px;
+        line-height: 20px;
+        font-weight: 300;
+        user-select: none;
+        vertical-align: top;
+
+        &.active {
+          background-color: $darkgray;
+          color: $white;
+        }
+      }
+
+      @include respond-to(mobile_landscape) {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: -100%;
+        width: 100%;
+        padding-top: 40px + $headerheight;
+        background-color: $brightlight;
+        transition: $animatetime1;
+        overflow: hidden;
+
+        * {
+          color: $black;
+        }
+
+        .guest-link {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          padding: 20px;
+        }
+
+        &.show {
+          right: 0px;
+          overflow: auto;
+        }
+      }
+
+      #guest-menu-right {
+        float: right;
+
+        @include respond-to(mobile_landscape) {
+          font-size: 21px;
+          text-align: center;
+          margin-top: 40px;
+          padding: 20px 0px;
+          float: none;
+        }
+
+        #guest-signup-link,
+        #guest-login-link {
+          display: inline-block;
+          margin: 10px;
+          padding: 10px;
+          line-height: 20px;
+          font-weight: 300;
+          user-select: none;
+        }
+      }
+    }
+  }
+}
