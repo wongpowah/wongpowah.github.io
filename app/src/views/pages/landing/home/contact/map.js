@@ -1,21 +1,27 @@
 import React from "react";
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import GoogleMapReact from "google-map-react";
+
 import PropTypes from "prop-types";
 
-const MapComponent = withGoogleMap(({ lat, lng }) => (
-  <GoogleMap defaultZoom={15} defaultCenter={{ lat, lng }}>
-    <Marker position={{ lat, lng }} />
-  </GoogleMap>
-));
+import Logo from "../../../../../resources/logo.png";
+
+const Marker = () => (
+  <div className="map-marker">
+    <span />
+    <img src={Logo} alt="marker" />
+  </div>
+);
 
 const Map = ({ lat, lng }) => (
-  <MapComponent
-    loadingElement={<div className="map-loading" />}
-    containerElement={<div className="map-container" />}
-    mapElement={<div className="map-ready" />}
-    lat={lat}
-    lng={lng}
-  />
+  <div className="map-container">
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: "AIzaSyBscHxR1IISA-NVEUqbM8wICGDEqZ5RgH4" }}
+      defaultCenter={{ lat, lng }}
+      defaultZoom={15}
+    >
+      <Marker lat={lat} lng={lng} />
+    </GoogleMapReact>
+  </div>
 );
 
 Map.propTypes = {

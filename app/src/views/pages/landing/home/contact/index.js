@@ -7,11 +7,7 @@ import "./style.css";
 
 const Map = LoadWhenVisible({
   loader: () => import("./map"),
-  Loading: () => (
-    <div className="map-container">
-      <div className="map-loading" />
-    </div>
-  )
+  Loading: () => <div className="map-container" />
 });
 
 const Contact = () => (
