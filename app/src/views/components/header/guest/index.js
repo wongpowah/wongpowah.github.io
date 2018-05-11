@@ -111,7 +111,7 @@ class Guest extends Component {
     } = this.state;
 
     return (
-      <div id="guest-header-wrapper" className={ClassNames({ float })}>
+      <div id="header-wrapper-guest" className={ClassNames({ float })}>
         <div id="guest">
           <Link id="guest-home-link" to="/">
             <img id="guest-logo" src={Logo} alt="Logo" />

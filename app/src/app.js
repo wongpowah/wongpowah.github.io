@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Router, Switch, Route } from "react-router-dom";
-import createHistory from "history/createBrowserHistory";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import store, { history } from "./store";
 
 import GuestRoute from "./views/pages/guestroute";
 import UserRoute from "./views/pages/userroute";
@@ -17,14 +19,15 @@ import ResetPassword from "./views/pages/landing/resetpassword";
 import Profile from "./views/pages/user/profile";
 import ChangeEmail from "./views/pages/user/changeemail";
 import ChangePassword from "./views/pages/user/changepassword";
-import NotFound from "./views/pages/notfound";
 
 import "./app.css";
 
-const history = createHistory();
-
 const Content = () => (
-  <div id="content-wrapper">
+  <div id="app">
+    <Route
+      path="/"
+      render={() => <Header onHistoryChange={history.listen} />}
+    />
     <Switch>
       <Route path="/" exact component={Home} />
       <GuestRoute path="/signup" exact component={Signup} />
@@ -34,29 +37,21 @@ const Content = () => (
       <UserRoute path="/profile" exact component={Profile} />
       <UserRoute path="/changeEmail" exact component={ChangeEmail} />
       <UserRoute path="/changePassword" exact component={ChangePassword} />
-      <Route component={NotFound} />
+      <Route render={() => <Redirect to="/" />} />
     </Switch>
     <Route path="/" component={Footer} />
+    <Background />
   </div>
 );
 
 export default class App extends Component {
-  componentDidMount() {
-    setTimeout(() => document.getElementById("loader-overlay").remove(), 2000);
-  }
-
   render() {
     return (
-      <Router history={history}>
-        <div id="app">
-          <Route
-            path="/"
-            render={() => <Header onHistoryChange={history.listen} />}
-          />
+      <Provider store={store}>
+        <Router history={history}>
           <Content />
-          <Background />
-        </div>
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }

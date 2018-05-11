@@ -1,30 +1,18 @@
 import React from "react";
 import { NavLink as Link } from "react-router-dom";
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import PropTypes from "prop-types";
 
-import "./contact.css";
+import { LoadWhenVisible } from "../../../../../loader";
 
-const MapComponent = withGoogleMap(({ lat, lng }) => (
-  <GoogleMap defaultZoom={15} defaultCenter={{ lat, lng }}>
-    <Marker position={{ lat, lng }} />
-  </GoogleMap>
-));
+import "./style.css";
 
-const Map = ({ lat, lng }) => (
-  <MapComponent
-    loadingElement={<div className="map-loading" />}
-    containerElement={<div className="map-container" />}
-    mapElement={<div className="map-ready" />}
-    lat={lat}
-    lng={lng}
-  />
-);
-
-Map.propTypes = {
-  lat: PropTypes.number.isRequired,
-  lng: PropTypes.number.isRequired
-};
+const Map = LoadWhenVisible({
+  loader: () => import("./map"),
+  Loading: () => (
+    <div className="map-container">
+      <div className="map-loading" />
+    </div>
+  )
+});
 
 const Contact = () => (
   <div id="contact-container">

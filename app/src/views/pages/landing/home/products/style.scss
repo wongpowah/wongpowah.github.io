@@ -1,4 +1,4 @@
-@import "../../../../variables.scss";
+@import "../../../../../variables.scss";
 
 #products-container {
   #products-title {
@@ -65,6 +65,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            transition: $animatetime1;
+            animation: fade-in $animatetime2 forwards;
           }
 
           .content-list-link {
@@ -76,10 +78,15 @@
             background-color: transparentize($primary, 0.3);
             opacity: 0;
             transition: $animatetime1;
+            z-index: 1;
 
             &:hover,
             &:focus {
               opacity: 1;
+
+              + img {
+                transform: translate(-50%, -50%) scale(1.2);
+              }
             }
 
             span {

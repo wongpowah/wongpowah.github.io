@@ -105,7 +105,7 @@ class User extends Component {
     const { showMenu, showDropdown } = this.state;
 
     return (
-      <div id="user-header-wrapper">
+      <div id="header-wrapper-user">
         <div id="user-header">
           <MenuButton
             id="user-menu-button"

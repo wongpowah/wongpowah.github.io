@@ -29,11 +29,13 @@ class Background extends Component {
 
     return (
       <div id="background-wrapper">
-        <div
-          id="background"
-          className={ClassNames({ user })}
-          style={{ backgroundImage }}
-        />
+        {backgroundImage && (
+          <div
+            id="background"
+            className={ClassNames({ user })}
+            style={{ backgroundImage }}
+          />
+        )}
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./about.css";
+import "./style.css";
 
 const About = () => (
   <div id="about-container">

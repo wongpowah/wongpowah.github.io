@@ -50,12 +50,10 @@ button {
 
 #app {
   opacity: 0;
-  animation: fade-in $animatetime2 1s forwards;
+  animation: fade-in $animatetime2 forwards;
 
-  #content-wrapper {
-    position: relative;
-    padding: $headerheight 0px $footerheight 0px;
-    min-height: 100vh;
-    box-sizing: border-box;
-  }
+  position: relative;
+  padding: $headerheight 0px $footerheight 0px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }

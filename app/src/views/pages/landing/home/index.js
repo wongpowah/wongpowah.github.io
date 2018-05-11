@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import About from "./about";
 import Products from "./products";
@@ -7,22 +8,20 @@ import Contact from "./contact";
 
 import "./style.css";
 
-export default class Home extends Component {
-  componentDidMount() {
-    setTimeout(() => this._jumpToHash(), 1000);
-  }
-
+class Home extends Component {
   componentDidUpdate() {
-    this._jumpToHash();
+    this._scrollToHash();
   }
 
-  _jumpToHash() {
+  _scrollToHash() {
     const { history } = this.props;
-    const hash = history.location.hash.substring(1) || "headline";
-    const element = document.getElementById(hash);
+    const hash = history.location.hash || "#headline";
+    const element = document.querySelector(hash);
 
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() =>
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      );
     }
   }
 
@@ -49,5 +48,10 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  history: PropTypes.shape()
+  history: PropTypes.shape(),
+  loaded: PropTypes.bool
 };
+
+const mapStateToProps = ({ loaded }) => ({ loaded });
+
+export default connect(mapStateToProps)(Home);
