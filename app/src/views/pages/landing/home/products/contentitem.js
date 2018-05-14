@@ -9,17 +9,15 @@ class ContentItem extends Component {
   }
 
   componentDidMount() {
-    const { loader } = this.props;
+    const { src } = this.props;
 
-    return loader().then(result => {
-      return new Promise(resolve => {
-        let image = new Image();
-        image.onload = resolve;
-        image.onerror = resolve;
-        image.src = result;
-      }).then(() => {
-        this.setState({ image: result });
-      });
+    return new Promise(resolve => {
+      let image = new Image();
+      image.onload = resolve;
+      image.onerror = resolve;
+      image.src = src;
+    }).then(() => {
+      this.setState({ image: src });
     });
   }
 
@@ -45,7 +43,7 @@ class ContentItem extends Component {
 }
 
 ContentItem.propTypes = {
-  loader: PropTypes.func,
+  src: PropTypes.string,
   alt: PropTypes.string,
   to: PropTypes.string,
   label: PropTypes.string

@@ -3,7 +3,7 @@ import React from "react";
 import "./style.css";
 
 const About = () => (
-  <div id="about-container">
+  <div id="about-container" className="container">
     <div id="about-title">關於</div>
     <div id="about-content">
       <p>

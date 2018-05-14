@@ -4,7 +4,7 @@ import LoadableVisibility from "react-loadable-visibility/react-loadable";
 
 const LoadComponent = (
   loadFunction,
-  { loader, Loading, Error, Timeout, delay = 200, timeout }
+  { loader, Loading, Error, Timeout, timeout }
 ) => {
   return loadFunction({
     loader,
@@ -13,13 +13,10 @@ const LoadComponent = (
         return <Error retry={props.retry} />;
       } else if (props.timedOut && Timeout) {
         return <Timeout retry={props.retry} />;
-      } else if (props.pastDelay && props.isLoading && Loading) {
+      } else if (props.isLoading && Loading) {
         return <Loading />;
-      } else {
-        return null;
       }
     },
-    delay,
     timeout
   });
 };

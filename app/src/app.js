@@ -11,23 +11,31 @@ import Header from "./views/components/header";
 import Footer from "./views/components/footer";
 import Background from "./views/components/background";
 
-import Home from "./views/pages/landing/home";
-import Signup from "./views/pages/landing/signup";
-import Login from "./views/pages/landing/login";
-import ForgotPassword from "./views/pages/landing/forgotpassword";
-import ResetPassword from "./views/pages/landing/resetpassword";
-import Profile from "./views/pages/user/profile";
-import ChangeEmail from "./views/pages/user/changeemail";
-import ChangePassword from "./views/pages/user/changepassword";
+import { Load } from "./loader";
 
 import "./app.css";
 
+const loadPage = loader =>
+  Load({ loader, Loading: () => <div className="page-loading" /> });
+
+const Home = loadPage(() => import("./views/pages/landing/home"));
+const Signup = loadPage(() => import("./views/pages/landing/signup"));
+const Login = loadPage(() => import("./views/pages/landing/login"));
+const ForgotPassword = loadPage(() =>
+  import("./views/pages/landing/forgotpassword")
+);
+const ResetPassword = loadPage(() =>
+  import("./views/pages/landing/resetpassword")
+);
+const Profile = loadPage(() => import("./views/pages/user/profile"));
+const ChangeEmail = loadPage(() => import("./views/pages/user/changeemail"));
+const ChangePassword = loadPage(() =>
+  import("./views/pages/user/changepassword")
+);
+
 const Content = () => (
   <div id="app">
-    <Route
-      path="/"
-      render={() => <Header onHistoryChange={history.listen} />}
-    />
+    <Route path="/" component={Header} />
     <Switch>
       <Route path="/" exact component={Home} />
       <GuestRoute path="/signup" exact component={Signup} />

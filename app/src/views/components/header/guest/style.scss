@@ -3,15 +3,11 @@
 #header-wrapper-guest {
   position: fixed;
   z-index: 100;
-  top: 0px;
+  top: -$headerheight;
   width: 100%;
   height: $headerheight;
   box-sizing: border-box;
   transition: $animatetime1;
-
-  * {
-    color: $white;
-  }
 
   &.float {
     background-color: $white;
@@ -30,6 +26,14 @@
         background-color: $black;
       }
     }
+  }
+
+  &.loaded {
+    top: 0px;
+  }
+
+  * {
+    color: $white;
   }
 
   #guest {
@@ -51,7 +55,7 @@
       }
 
       #guest-logo {
-        height: 100%;
+        width: 80px;
         filter: invert(1);
       }
     }

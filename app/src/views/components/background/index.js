@@ -13,10 +13,10 @@ class Background extends Component {
   }
 
   componentDidMount() {
-    return new Promise(resolve => {
+    new Promise(resolve => {
       let image = new Image();
-      image.onload = () => resolve(image);
-      image.onerror = () => resolve(null);
+      image.onload = resolve;
+      image.onerror = resolve;
       image.src = BackgroundImage;
     }).then(() => {
       this.setState({ backgroundImage: `url(${BackgroundImage})` });

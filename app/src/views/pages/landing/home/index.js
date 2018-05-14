@@ -2,13 +2,25 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import About from "./about";
-import Products from "./products";
-import Contact from "./contact";
+import { LoadWhenVisible } from "../../../../loader";
 
 import "./style.css";
 
+const LoadSection = (loader, title) =>
+  LoadWhenVisible({
+    loader,
+    Loading: () => <div className="section-loading">{title}</div>
+  });
+
+const About = LoadSection(() => import("./about"), "關於");
+const Products = LoadSection(() => import("./products"), "產品");
+const Contact = LoadSection(() => import("./contact"), "聯絡");
+
 class Home extends Component {
+  componentDidMount() {
+    this._scrollToHash();
+  }
+
   componentDidUpdate() {
     this._scrollToHash();
   }

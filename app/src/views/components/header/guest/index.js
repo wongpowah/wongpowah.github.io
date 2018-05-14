@@ -87,12 +87,21 @@ class Guest extends Component {
   }
 
   componentDidMount() {
-    const { onHistoryChange } = this.props;
+    const { history } = this.props;
 
     window.addEventListener("scroll", this._scrollHandler);
     this._scrollHandler();
 
-    this._unlisten = onHistoryChange(() => this._hideDropdown());
+    this._unlisten = history.listen(() => this._hideDropdown());
+
+    new Promise(resolve => {
+      let image = new Image();
+      image.onload = resolve;
+      image.onerror = resolve;
+      image.src = Logo;
+    }).then(() => {
+      this.setState({ logo: Logo });
+    });
   }
 
   componentWillUnmount() {
@@ -103,6 +112,7 @@ class Guest extends Component {
 
   render() {
     const {
+      logo,
       float,
       showDropdown,
       aboutActive,
@@ -111,10 +121,13 @@ class Guest extends Component {
     } = this.state;
 
     return (
-      <div id="header-wrapper-guest" className={ClassNames({ float })}>
+      <div
+        id="header-wrapper-guest"
+        className={ClassNames({ float, loaded: logo })}
+      >
         <div id="guest">
           <Link id="guest-home-link" to="/">
-            <img id="guest-logo" src={Logo} alt="Logo" />
+            <img id="guest-logo" src={logo} alt="Logo" />
           </Link>
           <MenuButton
             id="guest-menu-button"
@@ -154,7 +167,7 @@ class Guest extends Component {
 }
 
 Guest.propTypes = {
-  onHistoryChange: PropTypes.func.isRequired
+  history: PropTypes.shape().isRequired
 };
 
 export default Guest;

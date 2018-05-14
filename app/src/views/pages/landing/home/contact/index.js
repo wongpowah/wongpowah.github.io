@@ -1,17 +1,12 @@
 import React from "react";
 import { NavLink as Link } from "react-router-dom";
 
-import { LoadWhenVisible } from "../../../../../loader";
+import Map from "./map";
 
 import "./style.css";
 
-const Map = LoadWhenVisible({
-  loader: () => import("./map"),
-  Loading: () => <div className="map-container" />
-});
-
 const Contact = () => (
-  <div id="contact-container">
+  <div id="contact-container" className="container">
     <div id="contact-title">聯絡</div>
     <div className="contact-content">
       <div className="contact-info">
