@@ -1,0 +1,147 @@
+@import "../../../variables.scss";
+
+#header-wrapper {
+  position: fixed;
+  z-index: 100;
+  top: -$headerheight;
+  width: 100%;
+  height: $headerheight;
+  box-sizing: border-box;
+  transition: $animatetime1;
+
+  &.float {
+    background-color: $white;
+    box-shadow: $shadowdepth2;
+
+    * {
+      color: $black;
+    }
+
+    #header {
+      #home-link #logo {
+        filter: none;
+      }
+
+      #menu-button .menu-line {
+        background-color: $black;
+      }
+    }
+  }
+
+  &.loaded {
+    top: 0px;
+  }
+
+  * {
+    color: $white;
+  }
+
+  #header {
+    position: relative;
+    max-width: $pagewidth;
+    margin: auto;
+    padding: 0px 20px;
+
+    #home-link {
+      display: inline-block;
+      position: relative;
+      height: 40px;
+      margin: 10px 50px 10px 10px;
+      vertical-align: top;
+      z-index: 1;
+
+      @include respond-to(mobile_landscape) {
+        margin: 10px;
+      }
+
+      #logo {
+        width: 80px;
+        filter: invert(1);
+      }
+    }
+
+    #menu-button {
+      display: none;
+      width: 20px;
+      height: 20px;
+      float: right;
+      z-index: 1;
+
+      @include respond-to(mobile_landscape) {
+        display: inline-block;
+      }
+
+      .menu-line {
+        background-color: $white;
+      }
+    }
+
+    #menu {
+      display: initial;
+
+      .link {
+        display: inline-block;
+        padding: 20px;
+        line-height: 20px;
+        font-weight: 300;
+        user-select: none;
+        vertical-align: top;
+
+        &.active {
+          background-color: $darkgray;
+          color: $white;
+        }
+      }
+
+      @include respond-to(mobile_landscape) {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: -100%;
+        width: 100%;
+        padding-top: 40px + $headerheight;
+        background-color: $brightlight;
+        transition: $animatetime1;
+        overflow: hidden;
+
+        * {
+          color: $black;
+        }
+
+        .link {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          padding: 20px;
+        }
+
+        &.show {
+          right: 0px;
+          overflow: auto;
+        }
+      }
+
+      #menu-right {
+        float: right;
+
+        @include respond-to(mobile_landscape) {
+          font-size: 21px;
+          text-align: center;
+          margin-top: 40px;
+          padding: 20px 0px;
+          float: none;
+        }
+
+        #signup-link,
+        #login-link {
+          display: inline-block;
+          margin: 10px;
+          padding: 10px;
+          line-height: 20px;
+          font-weight: 300;
+          user-select: none;
+        }
+      }
+    }
+  }
+}

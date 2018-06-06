@@ -1,0 +1,44 @@
+@import "../../../variables.scss";
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &.loading {
+    background-color: $gray;
+
+    &::before,
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+      margin-left: -20px;
+      border-radius: 50%;
+      background-color: $darkgray;
+      opacity: 0.6;
+      z-index: 1;
+      animation: map-loading 2s infinite ease-in-out;
+    }
+
+    &::after {
+      animation-delay: -1s;
+    }
+
+    @keyframes map-loading {
+      0%,
+      100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+      }
+      50% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+      }
+    }
+  }
+}

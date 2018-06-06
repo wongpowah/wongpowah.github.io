@@ -1,0 +1,87 @@
+@import "../../../../variables.scss";
+
+#contact-container {
+  #contact-title {
+    font-size: 48px;
+    text-align: center;
+
+    @include respond-to(mobile_landscape) {
+      font-size: 32px;
+    }
+  }
+
+  .contact-branch {
+    margin-top: 50px;
+    padding-top: 20px;
+    font-size: 24px;
+    border-top: 1px solid $darkgray;
+
+    @include respond-to(mobile_landscape) {
+      text-align: center;
+    }
+  }
+
+  .contact-content {
+    margin-top: 40px;
+
+    .contact-info {
+      width: 50%;
+      float: left;
+
+      @include respond-to(mobile_landscape) {
+        width: auto;
+        text-align: center;
+        float: none;
+      }
+
+      &.secondary {
+        text-align: right;
+        float: right;
+
+        @include respond-to(mobile_landscape) {
+          text-align: center;
+          float: none;
+        }
+      }
+
+      .content-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+
+        @include respond-to(mobile_landscape) {
+          font-size: 18px;
+        }
+      }
+
+      .content-address,
+      .content-phone {
+        display: block;
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 40px;
+        color: $black;
+
+        @include respond-to(mobile_landscape) {
+          font-size: 16px;
+        }
+
+        span {
+          font-style: italic;
+          padding-right: 10px;
+        }
+      }
+
+      .content-phone {
+        font-weight: 200;
+      }
+    }
+
+    .map-container {
+      width: auto;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: $shadowdepth1;
+    }
+  }
+}

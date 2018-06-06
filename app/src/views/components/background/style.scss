@@ -18,9 +18,5 @@
     background-repeat: no-repeat;
     background-position: left center;
     animation: fade-in $animatetime2 forwards;
-
-    &.user {
-      filter: opacity(10%);
-    }
   }
 }

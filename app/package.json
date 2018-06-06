@@ -3,19 +3,16 @@
   "version": "0.0.1",
   "description": "WPW's website'",
   "author": "John Wong <john.joydesign@gmail.com>",
+  "proxy": "http://localhost:10000",
   "dependencies": {
     "axios": "^0.17.1",
-    "browser-cookies": "^1.2.0",
     "classnames": "^2.2.5",
-    "google-map-react": "^1.0.1",
     "history": "^4.7.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-loadable": "^5.4.0",
-    "react-loadable-visibility": "^2.4.2",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "react-loadable-visibility": "^2.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -24,11 +21,11 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react": "^7.9.1",
     "ncp": "^2.0.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.0",
     "npm-run-all": "^4.0.2",
-    "react-scripts": "^1.1.1",
+    "react-scripts": "^1.1.4",
     "rimraf": "^2.6.2"
   },
   "scripts": {
