@@ -28,7 +28,12 @@ class ContentItem extends Component {
     return (
       <div className="content-list-item">
         {to ? (
-          <Link className="content-list-link" target="_blank" to={to}>
+          <Link
+            className="content-list-link"
+            target="_blank"
+            to={to}
+            rel="noopener"
+          >
             <span>{label}</span>
           </Link>
         ) : (
