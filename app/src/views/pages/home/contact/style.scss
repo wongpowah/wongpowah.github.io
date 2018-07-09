@@ -1,6 +1,9 @@
 @import "../../../../variables.scss";
 
 #contact-container {
+  max-width: $pagewidth;
+  margin: auto;
+
   #contact-title {
     font-size: 48px;
     text-align: center;

@@ -6,3 +6,4 @@ app/src/**/*.css
 
 # Mac OS directory file
 .DS_Store
+CNAME

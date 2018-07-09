@@ -1,6 +1,9 @@
 @import "../../../../variables.scss";
 
 #products-container {
+  max-width: $pagewidth;
+  margin: auto;
+
   #products-title {
     font-size: 48px;
     text-align: center;
