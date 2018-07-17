@@ -25,7 +25,19 @@ const titleMap = {
 
 class Home extends Component {
   componentDidMount() {
-    window.onload = () => this._scrollToHash();
+    let scrolled = false;
+    let scrollHandler = () => {
+      scrolled = true;
+      window.removeEventListener("scroll", scrollHandler);
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+
+    window.onload = () => {
+      if (!scrolled) {
+        this._scrollToHash();
+      }
+    };
   }
 
   componentDidUpdate() {

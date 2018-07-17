@@ -1,9 +1,8 @@
 {
   "name": "wongpowah.github.io",
-  "version": "0.0.1",
-  "description": "WPW's website'",
-  "author": "John Wong <john.joydesign@gmail.com>",
-  "proxy": "http://localhost:10000",
+  "version": "0.1.0",
+  "description": "WPW's website",
+  "author": "John Wong <johnwongwwc@gmail.com>",
   "dependencies": {
     "axios": "^0.17.1",
     "classnames": "^2.2.5",
@@ -22,19 +21,16 @@
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.9.1",
-    "ncp": "^2.0.0",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.0.2",
-    "react-scripts": "^1.1.4",
-    "rimraf": "^2.6.2"
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "deploy": "node build.js"
+    "build": "npm run build-css && react-scripts build"
   },
   "babel": {
     "presets": [

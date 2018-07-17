@@ -30,8 +30,9 @@
   #products,
   #contact {
     position: relative;
-    box-sizing: border-box;
+    min-height: 500px;
     padding: 80px 40px;
+    box-sizing: border-box;
 
     .section-loading {
       position: absolute;

@@ -8,7 +8,7 @@ export default () => (
     <div id="footer">
       <div id="signature">
         Made with <span>♥</span> by{" "}
-        <Link to="https://Jswifty.github.io" target="_blank" rel="noopener">
+        <Link to="http://johnwong.io" target="_blank" rel="noopener">
           John Wong
         </Link>
       </div>
