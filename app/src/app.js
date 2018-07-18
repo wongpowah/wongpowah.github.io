@@ -13,12 +13,31 @@ import "./app.css";
 
 const history = createHistory();
 
+const titleMap = {
+  "#about": "關於",
+  "#products": "產品",
+  "#contact": "聯絡"
+};
+
 const Home = Load({
   loader: () => import("./views/pages/home"),
   Loading: () => <div className="page-loading" />
 });
 
 export default class App extends Component {
+  componentDidMount() {
+    this._unlisten = history.listen(() => {
+      const hash = history.location.hash;
+      const subtitle = titleMap[hash] ? ` | ${titleMap[hash]}` : "";
+
+      document.title = `黃保華針車有限公司${subtitle}`;
+    });
+  }
+
+  componentWillUnmount() {
+    this._unlisten();
+  }
+
   render() {
     return (
       <Router history={history}>

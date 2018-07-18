@@ -15,14 +15,6 @@ const About = LoadSection(() => import("./about"), "關於");
 const Products = LoadSection(() => import("./products"), "產品");
 const Contact = LoadSection(() => import("./contact"), "聯絡");
 
-const title = "黃保華針車有限公司";
-
-const titleMap = {
-  "#about": "關於",
-  "#products": "產品",
-  "#contact": "聯絡"
-};
-
 class Home extends Component {
   componentDidMount() {
     let scrolled = false;
@@ -48,12 +40,10 @@ class Home extends Component {
     const { history } = this.props;
     const hash = history.location.hash || "#headline";
     const element = document.querySelector(hash);
-    const subtitle = titleMap[hash] ? ` | ${titleMap[hash]}` : "";
 
     if (element) {
       setTimeout(() => {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
-        document.title = `${title}${subtitle}`;
       });
     }
   }

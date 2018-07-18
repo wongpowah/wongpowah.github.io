@@ -21,67 +21,6 @@ $animatetime2: 0.5s;
 $shadowdepth1: $shadow 0px 1px 5px;
 $shadowdepth2: $darkshadow 0px 1px 15px;
 
-@mixin gradient-background($color1: lighten($primary, 20), $color2: $primary) {
-  background: linear-gradient(to right, $color1, $color2);
-}
-
-@mixin button-font($fontSize: 13px) {
-  font-weight: 200;
-  font-size: $fontSize;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-@mixin round-border(
-  $color: $black,
-  $height: 50px,
-  $paddingH: 40px,
-  $thickness: 2px
-) {
-  border: $thickness solid $color;
-  border-radius: $height;
-  box-sizing: border-box;
-  height: $height;
-  padding: 0px $paddingH;
-  line-height: $height - 2 * $thickness;
-}
-
-@mixin bubble($color: $black, $height: 50px, $paddingH: 40px) {
-  height: $height;
-  padding: 0px $paddingH;
-  line-height: $height;
-  @include gradient-background();
-  color: $white;
-  border-radius: $height;
-}
-
-@mixin spinner($size: 20px, $color: $primary) {
-  width: $size;
-  height: $size;
-  position: relative;
-  text-align: center;
-  animation: spin 2s infinite linear;
-
-  &::before,
-  &::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0px;
-    width: 60%;
-    height: 60%;
-    background: linear-gradient(to right, lighten($color, 20), $color);
-    border-radius: $size;
-    animation: bounce 2s infinite ease-in-out;
-  }
-
-  &::after {
-    top: auto;
-    bottom: 0px;
-    animation-delay: -1s;
-  }
-}
-
 @mixin respond-to($media) {
   @if $media == mobile {
     @media only screen and (max-width: 420px) {
@@ -135,22 +74,5 @@ $shadowdepth2: $darkshadow 0px 1px 15px;
   to {
     padding-top: 0px;
     opacity: 1;
-  }
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
   }
 }
