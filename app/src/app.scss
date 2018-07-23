@@ -4,48 +4,15 @@
   font-family: "Nunito", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  transition: $animatetime1;
-  color: $black;
-
-  &:focus,
-  &:hover {
-    filter: brightness(1.1);
-  }
-}
-
-input,
-textarea {
-  border: none;
-  outline: none;
-}
-
 body {
   margin: 0px;
   padding: 0px;
   color: $black;
 }
 
-button {
-  border: none;
-  outline: none;
-  user-select: none;
-  background: none;
-  cursor: pointer;
-  transition: $animatetime1;
-
-  &:focus,
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadowdepth1;
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    transform: translateY(0px);
-    box-shadow: none;
-  }
+a {
+  text-decoration: none;
+  color: $black;
 }
 
 #app {

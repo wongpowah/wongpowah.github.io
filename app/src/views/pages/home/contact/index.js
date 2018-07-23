@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink as Link } from "react-router-dom";
 
-import Map from "../../../components/map";
+import HongKong from "../../../../resources/hongkong.png";
+import Shenzhen from "../../../../resources/shenzhen.png";
+import Shanghai from "../../../../resources/shanghai.png";
 
 import "./style.css";
 
@@ -26,9 +28,13 @@ const Contact = () => (
           </p>
         </div>
       </div>
-      <div className="map-container">
-        <Map center={{ lat: 22.324302, lng: 114.166341 }} zoom={15} />
-      </div>
+      <Link
+        className="map-container"
+        style={{ backgroundImage: `url(${HongKong})` }}
+        to="https://www.google.com/maps?q=黃保華針車有限公司"
+        target="_blank"
+        rel="noopener"
+      />
     </div>
     <div className="contact-branch">華裔針車（深圳）有限公司</div>
     <div className="contact-content">
@@ -51,9 +57,13 @@ const Contact = () => (
           </p>
         </div>
       </div>
-      <div className="map-container">
-        <Map center={{ lat: 22.529952, lng: 114.068913 }} zoom={15} />
-      </div>
+      <Link
+        className="map-container"
+        style={{ backgroundImage: `url(${Shenzhen})` }}
+        to="https://www.google.com/maps?q=聯合廣場+中國广东省深圳市福田区岗厦"
+        target="_blank"
+        rel="noopener"
+      />
     </div>
     <div className="contact-content">
       <div className="contact-info secondary">
@@ -74,9 +84,13 @@ const Contact = () => (
           </p>
         </div>
       </div>
-      <div className="map-container">
-        <Map center={{ lat: 31.223239, lng: 121.454261 }} zoom={15} />
-      </div>
+      <Link
+        className="map-container"
+        style={{ backgroundImage: `url(${Shanghai})` }}
+        to="https://www.google.com/maps?q=東方海外大廈"
+        target="_blank"
+        rel="noopener"
+      />
     </div>
   </div>
 );
