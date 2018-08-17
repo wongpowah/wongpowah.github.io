@@ -16,11 +16,10 @@ a {
 }
 
 #app {
-  opacity: 0;
-  animation: fade-in $animatetime2 forwards;
-
   position: relative;
   padding: $headerheight 0px $footerheight 0px;
   min-height: 100vh;
   box-sizing: border-box;
+  opacity: 0;
+  animation: fade-in $animatetime2 forwards;
 }
