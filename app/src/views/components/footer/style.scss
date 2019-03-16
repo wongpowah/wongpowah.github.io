@@ -11,12 +11,19 @@
     margin: auto;
     padding: 20px;
 
+    #copy-right {
+      display: inline-block;
+      color: $white;
+      font-size: 12px;
+    }
+
     #signature {
-      display: block;
+      display: inline-block;
       font-size: 14px;
       line-height: 20px;
       color: $white;
       text-align: center;
+      float: right;
 
       span {
         color: $error;

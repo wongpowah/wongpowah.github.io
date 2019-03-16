@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import { LoadWhenVisible } from "../../../loader";
-
-import "./style.css";
-
-const LoadSection = (loader, title) =>
-  LoadWhenVisible({
-    loader,
-    Loading: () => <div className="section-loading">{title}</div>
-  });
-
-const About = LoadSection(() => import("./about"), "關於");
-const Products = LoadSection(() => import("./products"), "產品");
-const Contact = LoadSection(() => import("./contact"), "聯絡");
+import Headline from "./headline";
+import About from "./about";
+import Agency from "./agency";
+import Contact from "./contact";
 
 class Home extends Component {
   componentDidMount() {
@@ -38,8 +29,8 @@ class Home extends Component {
 
   _scrollToHash() {
     const { history } = this.props;
-    const hash = history.location.hash || "#headline";
-    const element = document.querySelector(hash);
+    const elementRef = (history.location.hash || "#headline").substr(1);
+    const { element } = this[elementRef];
 
     if (element) {
       setTimeout(() => {
@@ -51,20 +42,10 @@ class Home extends Component {
   render() {
     return (
       <div id="home-wrapper">
-        <div id="headline">
-          <span>
-            名牌縫紉機總會<br />歷史悠久，信譽素孚
-          </span>
-        </div>
-        <div id="about">
-          <About />
-        </div>
-        <div id="products">
-          <Products />
-        </div>
-        <div id="contact">
-          <Contact />
-        </div>
+        <Headline ref={r => (this.headline = r)} />
+        <About ref={r => (this.about = r)} />
+        <Agency ref={r => (this.agency = r)} />
+        <Contact ref={r => (this.contact = r)} />
       </div>
     );
   }

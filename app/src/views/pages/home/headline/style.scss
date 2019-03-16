@@ -1,0 +1,54 @@
+@import "../../../../variables.scss";
+
+#headline {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  margin-top: -$headerheight;
+
+  &.show {
+    #headline-content {
+      span:nth-child(1) {
+        animation: headline-slide-up $animatetime2 0s forwards;
+      }
+
+      span:nth-child(2) {
+        animation: headline-slide-up $animatetime2 $animatetime2 forwards;
+      }
+    }
+  }
+
+  #headline-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 700;
+    color: $white;
+
+    span {
+      display: block;
+      opacity: 0;
+    }
+
+    @include respond-to(mobile_landscape) {
+      font-size: 32px;
+    }
+  }
+}
+
+@keyframes headline-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}

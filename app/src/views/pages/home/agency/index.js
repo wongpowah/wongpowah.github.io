@@ -1,4 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
+import ClassNames from "classnames";
+import debounce from "debounce";
+
+import "./style.css";
 
 import ContentItem from "./contentitem";
 
@@ -80,24 +84,65 @@ const agent = [
   }
 ];
 
-const Products = () => (
-  <div id="products-container" className="container">
-    <div id="products-title">產品</div>
-    <div id="products-content">
-      <div className="products-content-container">
-        <div className="content-list-title">總代理</div>
-        <div className="content-list">
-          {soleAgent.map(brand => <ContentItem key={brand.alt} {...brand} />)}
-        </div>
-      </div>
-      <div className="products-content-container">
-        <div className="content-list-title">代理</div>
-        <div className="content-list">
-          {agent.map(brand => <ContentItem key={brand.alt} {...brand} />)}
-        </div>
-      </div>
-    </div>
-  </div>
-);
+class Agency extends Component {
+  constructor(props) {
+    super(props);
 
-export default Products;
+    this.state = { show: false };
+
+    this._scrollHandler = debounce(() => this._onScroll(), true);
+  }
+
+  _onScroll() {
+    const { scrollY, innerHeight } = window;
+    const { offsetTop, offsetHeight } = this.element;
+
+    this.setState({
+      show:
+        scrollY + innerHeight > offsetTop &&
+        scrollY + 60 <= offsetTop + offsetHeight
+    });
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this._scrollHandler);
+    this._scrollHandler();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._scrollHandler);
+  }
+
+  render() {
+    const { show } = this.state;
+
+    return (
+      <div
+        ref={r => (this.element = r)}
+        id="agency"
+        className={ClassNames({ show })}
+      >
+        <div id="agency-content">
+          <div className="agency-list">
+            <div className="content-list-title">總代理</div>
+            <div className="content-list">
+              {soleAgent.map(brand => (
+                <ContentItem key={brand.alt} {...brand} />
+              ))}
+            </div>
+          </div>
+          <div className="agency-list">
+            <div className="content-list-title">代理</div>
+            <div className="content-list">
+              {agent.map(brand => (
+                <ContentItem key={brand.alt} {...brand} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Agency;

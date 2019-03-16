@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink as Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class ContentItem extends Component {
@@ -28,14 +27,14 @@ class ContentItem extends Component {
     return (
       <div className="content-list-item">
         {to ? (
-          <Link
+          <a
             className="content-list-link"
             target="_blank"
-            to={to}
-            rel="noopener"
+            rel="noopener noreferrer"
+            href={to}
           >
             <span>{label}</span>
-          </Link>
+          </a>
         ) : (
           <div className="content-list-link">
             <span>{label}</span>

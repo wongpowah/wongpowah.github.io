@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { NavLink as Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import ClassNames from "classnames";
+import debounce from "debounce";
 
 import MenuButton from "../menubutton";
 
-import Logo from "../../../resources/logo.png";
+import Logo from "../logo";
 
 import "./style.css";
 
@@ -16,12 +17,12 @@ class Header extends Component {
     this.state = {
       float: false,
       aboutActive: false,
-      productsActive: false,
+      agencyActive: false,
       contactActive: false,
       showDropdown: false
     };
 
-    this._scrollHandler = this._scrollHandler.bind(this);
+    this._scrollHandler = debounce(() => this._onScroll(), true);
     this._showDropdown = this._showDropdown.bind(this);
     this._hideDropdown = this._hideDropdown.bind(this);
   }
@@ -59,21 +60,21 @@ class Header extends Component {
     }
   }
 
-  _scrollHandler() {
+  _onScroll() {
     const about = document.getElementById("about");
-    const products = document.getElementById("products");
+    const agency = document.getElementById("agency");
     const contact = document.getElementById("contact");
     const { scrollY } = window;
 
     let windowTop = scrollY + 60;
     let aboutActive = false;
-    let productsActive = false;
+    let agencyActive = false;
     let contactActive = false;
 
     if (contact && windowTop > contact.offsetTop) {
       contactActive = true;
-    } else if (products && windowTop > products.offsetTop) {
-      productsActive = true;
+    } else if (agency && windowTop > agency.offsetTop) {
+      agencyActive = true;
     } else if (about && windowTop > about.offsetTop) {
       aboutActive = true;
     }
@@ -81,7 +82,7 @@ class Header extends Component {
     this.setState({
       float: scrollY > 0,
       aboutActive,
-      productsActive,
+      agencyActive,
       contactActive
     });
   }
@@ -93,15 +94,6 @@ class Header extends Component {
     this._scrollHandler();
 
     this._unlisten = history.listen(() => this._hideDropdown());
-
-    new Promise(resolve => {
-      let image = new Image();
-      image.onload = resolve;
-      image.onerror = resolve;
-      image.src = Logo;
-    }).then(() => {
-      this.setState({ logo: Logo });
-    });
   }
 
   componentWillUnmount() {
@@ -112,19 +104,19 @@ class Header extends Component {
 
   render() {
     const {
-      logo,
       float,
       showDropdown,
       aboutActive,
-      productsActive,
+      agencyActive,
       contactActive
     } = this.state;
 
     return (
-      <div id="header-wrapper" className={ClassNames({ float, loaded: logo })}>
+      <div id="header-wrapper" className={ClassNames({ float })}>
         <div id="header">
           <Link id="home-link" to="/">
-            <img id="logo" src={logo} alt="Logo" />
+            <Logo id="logo" />
+            <span>黃保華針車有限公司</span>
           </Link>
           <MenuButton
             id="menu-button"
@@ -142,11 +134,11 @@ class Header extends Component {
               關於
             </Link>
             <Link
-              className={ClassNames({ active: productsActive }, "link")}
-              style={productsActive ? { pointerEvents: "none" } : null}
-              to="/#products"
+              className={ClassNames({ active: agencyActive }, "link")}
+              style={agencyActive ? { pointerEvents: "none" } : null}
+              to="/#agency"
             >
-              產品
+              代理
             </Link>
             <Link
               className={ClassNames({ active: contactActive }, "link")}
@@ -158,6 +150,7 @@ class Header extends Component {
             <div id="menu-right" />
           </div>
         </div>
+        <Link id="back" to="/" />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 $white: #ffffff;
 $black: #555555;
-$primary: #4f5ebb;
+$primary: #ff0000;
 $lightgray: #f0f0f0;
 $gray: #d0d0d0;
 $darkgray: #a0a0a0;
@@ -9,6 +9,7 @@ $light: rgba(255, 255, 255, 0.3);
 $brightlight: rgba(255, 255, 255, 0.8);
 $shadow: rgba(0, 0, 0, 0.2);
 $darkshadow: rgba(0, 0, 0, 0.5);
+$transparent: transparent;
 
 $headerheight: 60px;
 $footerheight: 60px;
@@ -54,25 +55,5 @@ $shadowdepth2: $darkshadow 0px 1px 15px;
     @media only screen and (max-width: 1660px) {
       @content;
     }
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    padding-top: 20px;
-    opacity: 0;
-  }
-  to {
-    padding-top: 0px;
-    opacity: 1;
   }
 }

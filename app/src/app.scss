@@ -21,5 +21,14 @@ a {
   min-height: 100vh;
   box-sizing: border-box;
   opacity: 0;
-  animation: fade-in $animatetime2 forwards;
+  animation: app-fade-in $animatetime2 forwards;
+}
+
+@keyframes app-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

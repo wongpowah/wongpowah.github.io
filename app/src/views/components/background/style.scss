@@ -17,6 +17,16 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left center;
-    animation: fade-in $animatetime2 forwards;
+    opacity: 0;
+    animation: background-fade-in $animatetime2 forwards;
+  }
+}
+
+@keyframes background-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -1,22 +1,70 @@
-import React from "react";
+import React, { Component } from "react";
+import ClassNames from "classnames";
+import debounce from "debounce";
+
+import TeamPhoto from "../../../../resources/teamphoto.png";
 
 import "./style.css";
 
-const About = () => (
-  <div id="about-container" className="container">
-    <div id="about-title">關於</div>
-    <div id="about-content">
-      <p>
-        黃保華針車有限公司創辦已超過六十年，向以經營工業縫紉機本銷及出入口業務，憑著「品質保證」及「服務必盡忠誠」的宗旨，為各廠家，同業提供盡善盡美之服務。本公司總代理日本精工手袋，厚料機車系列及利華圓頭鎖眼機代理，雅滿桃針織機車系列，三菱電腦皮革厚料機車系列，兄弟製衣機車系列，日本真善美皮革車，財富暗縫機車系列，豐田，美國美文電剪，日本風琴車針等工業衣車設備及配件。力求以高科技，更先進，更完善的製衣設備，以應各用戶日漸多元化，生產高檔產品的更高要求。
-      </p>
-      <p>
-        由於中國內地外資廠家數目日增，對進口衣車需求量日趨龐大，為配合各用戶對技術服務，衣車及配件的資料查詢，本公司已在上海及廣州設有聯絡處可直接為顧客提供技術支援及所需的資料，也是充分體現本公司一向以客為先的精神。
-      </p>
-      <p>
-        如有任何縫紉設備及技術問題之查詢，謹請以電話，傳真，電郵或網頁與敝司聯絡，祈能為貴公司提供更好服務。
-      </p>
-    </div>
-  </div>
-);
+class About extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { show: false, image: null };
+
+    this._scrollHandler = debounce(() => this._onScroll(), true);
+  }
+
+  _onScroll() {
+    const { scrollY, innerHeight } = window;
+    const { offsetTop, offsetHeight } = this.element;
+
+    this.setState({
+      show:
+        scrollY + innerHeight > offsetTop &&
+        scrollY + 60 <= offsetTop + offsetHeight
+    });
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this._scrollHandler);
+    this._scrollHandler();
+
+    return new Promise(resolve => {
+      let image = new Image();
+      image.onload = resolve;
+      image.onerror = resolve;
+      image.src = TeamPhoto;
+    }).then(() => {
+      this.setState({ image: TeamPhoto });
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._scrollHandler);
+  }
+
+  render() {
+    const { show, image } = this.state;
+
+    return (
+      <div
+        ref={r => (this.element = r)}
+        id="about"
+        className={ClassNames({ show })}
+      >
+        <div id="about-content">
+          {image && <img id="about-image" src={image} alt={"Team"} />}
+          <div id="about-info">
+            <div id="about-title">關於</div>
+            <div id="about-message">
+              黃保華針車有限公司創辦已超過七十年，向以經營工業縫紉機本銷及出入口業務，憑著「品質保證」及「服務必盡忠誠」的宗旨，為各廠家，同業提供盡善盡美的服務。力求以高科技，更先進，更完善的製衣設備，以應各用戶日漸多元化，生產高檔產品的更高要求。
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default About;
