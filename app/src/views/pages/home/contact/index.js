@@ -102,7 +102,7 @@ class Contact extends Component {
           </div>
           <div className="contact-item">
             <div className="contact-subtitle">
-              深圳代表處：Vietnam Unique Co., Ltd.
+              越南代表處：Vietnam Unique Co., Ltd.
             </div>
             <table className="contact-info">
               <tbody>
@@ -124,6 +124,18 @@ class Contact extends Component {
                   <td>電郵：</td>
                   <td>
                     <a href="mailto://info@vn-unique.com">info@vn-unique.com</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>網址：</td>
+                  <td>
+                    <a
+                      href="http://vn-unique.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      vn-unique.com
+                    </a>
                   </td>
                 </tr>
               </tbody>
