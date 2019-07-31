@@ -6,7 +6,7 @@ import debounce from "debounce";
 
 import MenuButton from "../menubutton";
 
-import Logo from "../logo";
+import Logo from "../../../resources/logo.svg";
 
 import "./style.css";
 
@@ -115,7 +115,7 @@ class Header extends Component {
       <div id="header-wrapper" className={ClassNames({ float })}>
         <div id="header">
           <Link id="home-link" to="/">
-            <Logo id="logo" />
+            <img src={Logo} id="logo" alt="logo" />
             <span>黃保華針車有限公司</span>
           </Link>
           <MenuButton
